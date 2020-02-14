@@ -140,7 +140,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
     // given
     
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     
     let expectation = self.expectation(description: "testLoginWithConfig")
     
@@ -180,7 +180,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
   func testLogin() {
     // given
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     guard let testUrl = url else {
       XCTAssert(false, "invalid url")
@@ -219,7 +219,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
   func testLoginAndLogout() {
     // given
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     guard let testUrl = url else {
       XCTAssert(false, "invalid url")
@@ -263,7 +263,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
   func testLoginWithoutLogout() {
     // given
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     guard let testUrl = url else {
       XCTAssert(false, "invalid url")
@@ -308,7 +308,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
   func testExhangeToken() {
     // given
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -357,7 +357,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
   func testExhangeTokenWithInvalidState() {
     // given
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -405,7 +405,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
   func testExhangeTokenWithoutState() {
     // given
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -455,7 +455,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
     mockUrlSession.mockExchangeTokenResponseData.mockResponse = MockExchangeTokenResponseData.mockExpiredTokenResponse
     
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -502,7 +502,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
   func testAccessTokenCache() {
     // given
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -558,7 +558,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
     // set service error
     mockUrlSession.mockConfigurationServiceError = 400
     
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     guard let testUrl = url else {
       XCTAssert(false, "invalid url")
@@ -601,7 +601,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
     // set service error
     mockUrlSession.mockExchangeTokenServiceError = 400
     
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -646,7 +646,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
     // set service error
     mockUrlSession.mockTokenInfoServiceError = 400
     
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -675,7 +675,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
    
           XCTAssertNil(error)
           
-          grabIdPartner.getIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
+          grabIdPartner.loadIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
             XCTAssertNotNil(error)
             XCTAssertTrue(error?.code == .idTokenInfoServiceFailed)
             // verify id token is invalid
@@ -697,7 +697,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
     // given - 0581ada9-cdbb-4f16-9d43-ad50debdbc6a
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
     
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -726,7 +726,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
           
           XCTAssertNil(error)
           
-          grabIdPartner.getIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
+          grabIdPartner.loadIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
             XCTAssertNotNil(error)
             XCTAssertTrue(error?.code == .invalidNonce)
 
@@ -744,7 +744,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
     // given - 0581ada9-cdbb-4f16-9d43-ad50debdbc6a
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
     
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -776,7 +776,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
           
           XCTAssertNil(error)
 
-          grabIdPartner.getIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
+          grabIdPartner.loadIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
             // result
             XCTAssert(tokenInfo?.service == "PASSENGER")
             XCTAssert(tokenInfo?.audience == "f795769ebe7446f38dede8fd36ee32fd")
@@ -788,7 +788,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
             // clear the mock response and verified getIdTokenInfo is returning data from cache.
             mockUrlSession.mockTokenInfoResponseData.mockResponse = ""
             
-            grabIdPartner.getIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
+            grabIdPartner.loadIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
               XCTAssertNil(error)
               // result
               XCTAssert(tokenInfo?.service == "PASSENGER")
@@ -812,7 +812,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
   func testLoginCompletedWithWebViewPresented() {
     // given
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     guard let testUrl = url else {
       XCTAssert(false, "invalid url")
@@ -847,7 +847,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
     // given - 0581ada9-cdbb-4f16-9d43-ad50debdbc6a
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
 
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {
@@ -878,7 +878,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
           
           XCTAssertNil(error)
           
-          grabIdPartner.getIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
+          grabIdPartner.loadIdTokenInfo(loginSession: loginSession) { (tokenInfo, error) in
             XCTAssertNil(error)
             
             if let tokenInfo = tokenInfo {
@@ -904,7 +904,7 @@ class GrabIdPartnerSDKTests: XCTestCase {
     // given - 0581ada9-cdbb-4f16-9d43-ad50debdbc6a
     let mockUrlSession = URLSessionMockSuccess(data:nil, response:nil, error:nil)
     
-    let grabIdPartner = GrabIdPartner(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
+    let grabIdPartner = GrabSDK(urlSession: mockUrlSession, bundle: Bundle(for: GrabIdPartnerSDKTests.self))
     let url = URL(string: "grabtest://testopen")
     let expectation = self.expectation(description: "testExchangeToken")
     guard let testUrl = url else {

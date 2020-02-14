@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0275E178219A0ABA001094C1 /* GrabIdPartnerSDKTests-Objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0275E177219A0ABA001094C1 /* GrabIdPartnerSDKTests-Objc.m */; };
 		0275E180219BBE7C001094C1 /* TestMockHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275E17E219BBE1F001094C1 /* TestMockHelper.swift */; };
 		0275E185219D4740001094C1 /* TestMockHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0275E184219D4740001094C1 /* TestMockHelper.m */; };
 		02AE775B2165C1E500ECBD74 /* GrabIdPartnerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AE775A2165C1E500ECBD74 /* GrabIdPartnerSDK.framework */; };
@@ -33,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		0275E174219A08D0001094C1 /* GrabIdPartnerSDK_Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GrabIdPartnerSDK_Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		0275E177219A0ABA001094C1 /* GrabIdPartnerSDKTests-Objc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GrabIdPartnerSDKTests-Objc.m"; sourceTree = "<group>"; };
 		0275E17E219BBE1F001094C1 /* TestMockHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMockHelper.swift; sourceTree = "<group>"; };
 		0275E182219D4057001094C1 /* TestMockHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMockHelper.h; sourceTree = "<group>"; };
 		0275E184219D4740001094C1 /* TestMockHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMockHelper.m; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 				0275E182219D4057001094C1 /* TestMockHelper.h */,
 				0275E17E219BBE1F001094C1 /* TestMockHelper.swift */,
 				607FACEB1AFB9204008FA782 /* GrabIdPartnerSDKTests.swift */,
-				0275E177219A0ABA001094C1 /* GrabIdPartnerSDKTests-Objc.m */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				0275E174219A08D0001094C1 /* GrabIdPartnerSDK_Tests-Bridging-Header.h */,
 			);
@@ -352,7 +349,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0275E178219A0ABA001094C1 /* GrabIdPartnerSDKTests-Objc.m in Sources */,
 				0275E185219D4740001094C1 /* TestMockHelper.m in Sources */,
 				0275E180219BBE7C001094C1 /* TestMockHelper.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* GrabIdPartnerSDKTests.swift in Sources */,

@@ -7,142 +7,81 @@
  */
 
 import Foundation
-@objc public enum GrabIdPartnerErrorDomain: Int {
-  case serviceDiscovery
-  case loadConfiguration
-  case authorization
-  case exchangeToken
-  case getIdTokenInfo
-  case logout
-  case protectedResource
-  case customProtocolsService
+
+public enum GrabIdPartnerErrorDomain: Int {
+    case serviceDiscovery
+    case loadConfiguration
+    case authorization
+    case exchangeToken
+    case getIdTokenInfo
+    case logout
+    case protectedResource
+    case customProtocolsService
 }
 
-@objc public enum GrabIdPartnerErrorCode : Int {
-  case grabIdServiceFailed
-  case discoveryServiceFailed
-  case idTokenInfoServiceFailed
-  case exchangeTokenServiceFailed
-  case authorizationInitializationFailure
-  case securityValidationFailed
-  case logoutFailed
-  case invalidIdToken                 // The id token is invalid.
-  case invalidNonce
-  case invalidConfiguration           // Missing GrabIdPartnerSDK in plist/manifest
-  case somethingWentWrong             // This error is unexpected or cannot be exposed.
-  case network                        // There is an issue with network connectivity.
-  case invalidClientId                // Invalid client id
-  case invalidScope                   // Invalid scope
-  case invalidRedirectUrl             // Invalid redirect url
-  case invalidAuthorizationCode       // Invalid authorization code
-  case invalidUrl                     // The authorize end point is invalid
-  case invalidPartnerId               // Partner id is not set in AndroidManifest.
-  case unAuthorized                   // Partner application is unauthorized.
-  case authorizationFailed            // Authorization failed
-  case serviceUnavailable             // The service was not available.
-  case serviceError                   // The GrabId service is returning an error.
-  case invalidAccessToken             // The access token is invalid.
-  case invalidResponse                // Unexpected response from GrabId service
-  case invalidServiceDiscoveryUrl     // Invalid service discovery url
-  case invalidAppBundle               // Missing bundle
-  case invalidCustomProtocolUrl       // Invalid custom protocol url to get the Grab app deeplinks.
-  
-  case partnerAppError = 10000               // app defined errors are 10000 and above
-  // more to come ...
+public enum GrabIdPartnerErrorCode: Int {
+    case grabIdServiceFailed
+    case discoveryServiceFailed
+    case idTokenInfoServiceFailed
+    case exchangeTokenServiceFailed
+    case authorizationInitializationFailure
+    case securityValidationFailed
+    case logoutFailed
+    case invalidIdToken                 // The id token is invalid.
+    case invalidNonce
+    case invalidConfiguration           // Missing GrabIdPartnerSDK in plist/manifest
+    case somethingWentWrong             // This error is unexpected or cannot be exposed.
+    case network                        // There is an issue with network connectivity.
+    case invalidClientId                // Invalid client id
+    case invalidScope                   // Invalid scope
+    case invalidRedirectUrl             // Invalid redirect url
+    case invalidAuthorizationCode       // Invalid authorization code
+    case invalidUrl                     // The authorize end point is invalid
+    case invalidPartnerId               // Partner id is not set in AndroidManifest.
+    case unAuthorized                   // Partner application is unauthorized.
+    case authorizationFailed            // Authorization failed
+    case serviceUnavailable             // The service was not available.
+    case serviceError                   // The GrabId service is returning an error.
+    case invalidAccessToken             // The access token is invalid.
+    case invalidResponse                // Unexpected response from GrabId service
+    case invalidServiceDiscoveryUrl     // Invalid service discovery url
+    case invalidAppBundle               // Missing bundle
+    case invalidCustomProtocolUrl       // Invalid custom protocol url to get the Grab app deeplinks.
+
+    case partnerAppError = 10000               // app defined errors are 10000 and above
+    // more to come ...
 }
 
-@objc open class GrabIdPartnerError : NSObject {
-  @objc public let domain: GrabIdPartnerErrorDomain
-  @objc public let code : GrabIdPartnerErrorCode
-  @objc public let localizeMessage : String?
-  @objc public let serviceError : Error?            // network or service error
-  
-  @objc public init(code: GrabIdPartnerErrorCode, localizeMessage: String? = nil, domain: GrabIdPartnerErrorDomain, serviceError: Error? = nil) {
-    self.code = code
-    self.localizeMessage = localizeMessage
-    self.serviceError = serviceError
-    self.domain = domain
-    
-    super.init()
-  }
-}
+public struct GrabIdPartnerError: Error {
+    public let code: GrabIdPartnerErrorCode
+    public let localizedMessage: String?
+    public let domain: GrabIdPartnerErrorDomain
+    public let serviceError: Error?            // network or service error
 
-@objc public enum GrabIdPartnerLocalization: Int, RawRepresentable {
-  case invalidUrl
-  case securityValidationFailed
-  case authorizationInitializationFailure
-  case invalidResponse
-  case logoutFailed
-  case invalidIdToken
-  case invalidNonce
-  case invalidConfiguration
-  case somethingWentWrong
-  case invalidClientId
-  case invalidScope
-  case invalidRedirectUrl
-  case serviceError
-  case invalidAppBundle
-  case invalidCustomProtocolUrl
-    
-  public typealias RawValue = String
-    
-  public var rawValue: RawValue {
-    switch self {
-      case .invalidUrl: return Localization.invalidUrl
-      case .securityValidationFailed: return Localization.securityValidationFailed
-      case .somethingWentWrong:  return Localization.somethingWentWrong
-      case .invalidResponse:  return Localization.invalidResponse
-      case .authorizationInitializationFailure: return Localization.authorizationInitializationFailure
-      case .invalidIdToken: return Localization.invalidIdToken
-      case .invalidNonce: return Localization.invalidNonce
-      case .logoutFailed: return Localization.logoutFailed
-      case .invalidClientId: return Localization.invalidClientId
-      case .invalidScope: return Localization.invalidScope
-      case .invalidRedirectUrl: return Localization.invalidRedirectUrl
-      case .invalidConfiguration: return Localization.invalidConfiguration
-      case .serviceError: return Localization.serviceError
-      case .invalidAppBundle: return Localization.invalidAppBundle
-      case .invalidCustomProtocolUrl: return Localization.invalidCustomProtocolUrl
+    public init(code: GrabIdPartnerErrorCode, localizedMessage: String?, domain: GrabIdPartnerErrorDomain, serviceError: Error?) {
+        self.code = code
+        self.localizedMessage = localizedMessage
+        self.domain = domain
+        self.serviceError = serviceError
     }
-  }
-    
-  public init?(rawValue: RawValue) {
-    switch rawValue {
-      case Localization.invalidUrl: self = .invalidUrl
-      case Localization.somethingWentWrong: self = .somethingWentWrong
-      case Localization.securityValidationFailed: self = .securityValidationFailed
-      case Localization.invalidResponse: self = .invalidResponse
-      case Localization.authorizationInitializationFailure: self = .authorizationInitializationFailure
-      case Localization.logoutFailed: self = .logoutFailed
-      case Localization.invalidIdToken: self = .invalidIdToken
-      case Localization.invalidNonce: self = .invalidNonce
-      case Localization.invalidClientId: self = .invalidClientId
-      case Localization.invalidScope: self = .invalidScope
-      case Localization.invalidRedirectUrl: self = .invalidRedirectUrl
-      case Localization.invalidConfiguration: self = .invalidConfiguration
-      case Localization.serviceError: self = .serviceError
-      case Localization.invalidAppBundle: self = .invalidAppBundle
-      case Localization.invalidCustomProtocolUrl: self = .invalidCustomProtocolUrl
-      
-      default: self = .somethingWentWrong
-    }
-  }
-  
-  private struct Localization {
-    static let invalidUrl = "Invalid Url."
-    static let securityValidationFailed = "Security validation failed."
-    static let invalidResponse = "Invalid response from GrabId Partner service."
-    static let authorizationInitializationFailure = "Authorization initialization failed."
-    static let logoutFailed = "Logout failed."
-    static let somethingWentWrong = "Unknown."
-    static let invalidIdToken = "Invalid idToken."
-    static let invalidNonce = "Invalid Nonce."
-    static let invalidConfiguration = "Configuration error."
-    static let invalidClientId = "Invalid client id."
-    static let invalidScope = "Invalid scope."
-    static let invalidRedirectUrl = "Invalid redirect url."
-    static let serviceError = "GrabId service error."
-    static let invalidAppBundle = "App bundle is invalid"
-    static let invalidCustomProtocolUrl = "Invalid custom protocol url"
-  }
+}
+
+public typealias Loc = Localization
+
+public struct Localization {
+    public static let invalidUrl = "Invalid Url."
+    public static let securityValidationFailed = "Security validation failed."
+    public static let invalidResponse = "Invalid response from GrabId Partner service."
+    public static let authorizationInitializationFailure = "Authorization initialization failed."
+    public static let logoutFailed = "Logout failed."
+    public static let somethingWentWrong = "Unknown."
+    public static let invalidIdToken = "Invalid idToken."
+    public static let invalidNonce = "Invalid Nonce."
+    public static let invalidConfiguration = "Configuration error."
+    public static let invalidClientId = "Invalid client id."
+    public static let invalidScope = "Invalid scope."
+    public static let invalidRedirectUrl = "Invalid redirect url."
+    public static let serviceError = "GrabId service error."
+    public static let invalidAppBundle = "App bundle is invalid"
+    public static let invalidCustomProtocolUrl = "Invalid custom protocol url"
 }

@@ -1,8 +1,8 @@
-platform :ios, '9.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target 'GrabIdPartnerSDK_Example' do
-  pod 'GrabIdPartnerSDK', :git => 'https://github.com/grab/grabplatform-sdk-ios.git'
+  pod 'GrabIdPartnerSDK', :path => '../'
 
   target 'GrabIdPartnerSDK_Tests' do
     inherit! :search_paths

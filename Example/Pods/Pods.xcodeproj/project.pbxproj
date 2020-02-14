@@ -15,6 +15,7 @@
 		5BFE6724119D9F75A8C4D97C96AF6AE7 /* Pods-GrabIdPartnerSDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 807BC3AE9120B7DC1956E4B27711610E /* Pods-GrabIdPartnerSDK_Example-dummy.m */; };
 		750CF36C46264DCC664871AAA1340ED7 /* KeychainTokenWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6700179D54D7E0E79770759046DD00FC /* KeychainTokenWrapper.swift */; };
 		98F3A602D1419C22DF5D1309E74DC4AD /* GrabIdPartnerLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E83791B13509A061781C2B523E4727 /* GrabIdPartnerLogin.swift */; };
+		BADC827B893D73C5C6A59DFD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADC83A57A831D951A9819A7 /* API.swift */; };
 		BF5D980775D839284C0772F9B418337C /* Pods-GrabIdPartnerSDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 134728BF5AC96FC4713EA48569A58E23 /* Pods-GrabIdPartnerSDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C56B07395A11C8728E9B5573FB7FF05A /* AuthorizationCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D17893B46D867DFAA26B3BC1950F063 /* AuthorizationCodeGenerator.swift */; };
 		CC74204679709DBFA9511EF4B3103555 /* Pods-GrabIdPartnerSDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB576627E5A95F0CF787631ACF08CB89 /* Pods-GrabIdPartnerSDK_Tests-dummy.m */; };
@@ -75,6 +76,7 @@
 		ABD5FCE490E75D0347203F983DD0410A /* GrabIdPartnerSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = GrabIdPartnerSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B52800B6429BF564967E88B15CE18B7E /* Pods-GrabIdPartnerSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GrabIdPartnerSDK_Example.modulemap"; sourceTree = "<group>"; };
 		B6B30A2B4D5A0B5F4EF4186B267002D6 /* Pods_GrabIdPartnerSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GrabIdPartnerSDK_Tests.framework; path = "Pods-GrabIdPartnerSDK_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BADC83A57A831D951A9819A7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BB576627E5A95F0CF787631ACF08CB89 /* Pods-GrabIdPartnerSDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GrabIdPartnerSDK_Tests-dummy.m"; sourceTree = "<group>"; };
 		C06A7E7A286CE9C0CD9F1FAFD2E9C70F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		CFE6716E74720E8BFF100892911D9457 /* Pods-GrabIdPartnerSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GrabIdPartnerSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				6700179D54D7E0E79770759046DD00FC /* KeychainTokenWrapper.swift */,
 				D7836E0CD7FDB91FE24CECE2B0AF2796 /* Pod */,
 				29056C6AF54E4C87448C6F4867BF936C /* Support Files */,
+				BADC83A57A831D951A9819A7 /* API.swift */,
 			);
 			name = GrabIdPartnerSDK;
 			path = ../..;
@@ -341,6 +344,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 53CBFCB123B9295F09FC4177B73DFF65 /* Products */;
@@ -390,6 +394,7 @@
 				172CA4FE6B62D936816455818E7DFD8C /* GrabIdPartnerSDK-dummy.m in Sources */,
 				219E6489A5DC79700CCCE1BEFE0C2DBF /* IdTokenInfo.swift in Sources */,
 				750CF36C46264DCC664871AAA1340ED7 /* KeychainTokenWrapper.swift in Sources */,
+				BADC827B893D73C5C6A59DFD /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,139 +432,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		06928177F8D74268F551B95085CCEC9A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 423E82847878BDDAAF4BEF09355CDF5D /* Pods-GrabIdPartnerSDK_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Example/Pods-GrabIdPartnerSDK_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Example/Pods-GrabIdPartnerSDK_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		10A7BC3F3BA1EDDDFF913F90777CDD7A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D15B7898291B1F22268D3D23C375699 /* Pods-GrabIdPartnerSDK_Tests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Tests/Pods-GrabIdPartnerSDK_Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Tests/Pods-GrabIdPartnerSDK_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		5505C761481756704A38695CF31A2D6F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A46AA1BF03CF97323E799562C2B9278 /* Pods-GrabIdPartnerSDK_Example.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Example/Pods-GrabIdPartnerSDK_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Example/Pods-GrabIdPartnerSDK_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		6C13AF0D70B2DBDEDFA34C0BA31DBD75 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AABBD2447C7CFDB05C8C3B02A9ADC78 /* GrabIdPartnerSDK.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK.modulemap";
-				PRODUCT_MODULE_NAME = GrabIdPartnerSDK;
-				PRODUCT_NAME = GrabIdPartnerSDK;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
+		257497152829C177993B5EC99C1D227A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -607,7 +480,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -619,7 +492,143 @@
 			};
 			name = Release;
 		};
-		916E0404255105F480DC4950B7625F7A /* Debug */ = {
+		A03C87E8C01E95052D1FAEDB25A5759F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AABBD2447C7CFDB05C8C3B02A9ADC78 /* GrabIdPartnerSDK.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK.modulemap";
+				PRODUCT_MODULE_NAME = GrabIdPartnerSDK;
+				PRODUCT_NAME = GrabIdPartnerSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C76D38A41B323BEE5480BEDECED69B42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFE6716E74720E8BFF100892911D9457 /* Pods-GrabIdPartnerSDK_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Tests/Pods-GrabIdPartnerSDK_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Tests/Pods-GrabIdPartnerSDK_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D70D215CF572D459516D4168CDF24314 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AABBD2447C7CFDB05C8C3B02A9ADC78 /* GrabIdPartnerSDK.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK.modulemap";
+				PRODUCT_MODULE_NAME = GrabIdPartnerSDK;
+				PRODUCT_NAME = GrabIdPartnerSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D720133C585A0283A0341898F83DA6B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D15B7898291B1F22268D3D23C375699 /* Pods-GrabIdPartnerSDK_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Tests/Pods-GrabIdPartnerSDK_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Tests/Pods-GrabIdPartnerSDK_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DD8F832993327D1DD8046C3CBCBD97CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -670,7 +679,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -683,11 +692,13 @@
 			};
 			name = Debug;
 		};
-		A69C2F9A3CD1BB5029CD66EA38AC969B /* Release */ = {
+		DE016C10CDE8CBF04DFF1EF188E2F1CC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFE6716E74720E8BFF100892911D9457 /* Pods-GrabIdPartnerSDK_Tests.release.xcconfig */;
+			baseConfigurationReference = 6A46AA1BF03CF97323E799562C2B9278 /* Pods-GrabIdPartnerSDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -697,12 +708,47 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Tests/Pods-GrabIdPartnerSDK_Tests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Example/Pods-GrabIdPartnerSDK_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Tests/Pods-GrabIdPartnerSDK_Tests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Example/Pods-GrabIdPartnerSDK_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E810E410C73228AB5D01088ACDB783DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 423E82847878BDDAAF4BEF09355CDF5D /* Pods-GrabIdPartnerSDK_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Example/Pods-GrabIdPartnerSDK_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GrabIdPartnerSDK_Example/Pods-GrabIdPartnerSDK_Example.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -717,45 +763,14 @@
 			};
 			name = Release;
 		};
-		BF0DCBB43FB500E0C2E03A7984C76B3F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AABBD2447C7CFDB05C8C3B02A9ADC78 /* GrabIdPartnerSDK.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GrabIdPartnerSDK/GrabIdPartnerSDK.modulemap";
-				PRODUCT_MODULE_NAME = GrabIdPartnerSDK;
-				PRODUCT_NAME = GrabIdPartnerSDK;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				916E0404255105F480DC4950B7625F7A /* Debug */,
-				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
+				DD8F832993327D1DD8046C3CBCBD97CD /* Debug */,
+				257497152829C177993B5EC99C1D227A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -763,8 +778,8 @@
 		7368EC6D1F7D63DB868E4FB7A4EA4938 /* Build configuration list for PBXNativeTarget "Pods-GrabIdPartnerSDK_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5505C761481756704A38695CF31A2D6F /* Debug */,
-				06928177F8D74268F551B95085CCEC9A /* Release */,
+				DE016C10CDE8CBF04DFF1EF188E2F1CC /* Debug */,
+				E810E410C73228AB5D01088ACDB783DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -772,8 +787,8 @@
 		AC7136812BDD466E657A44C49AA5D6CF /* Build configuration list for PBXNativeTarget "GrabIdPartnerSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF0DCBB43FB500E0C2E03A7984C76B3F /* Debug */,
-				6C13AF0D70B2DBDEDFA34C0BA31DBD75 /* Release */,
+				A03C87E8C01E95052D1FAEDB25A5759F /* Debug */,
+				D70D215CF572D459516D4168CDF24314 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -781,8 +796,8 @@
 		D7DF48F4D374AAEDC94A465B7E7223D0 /* Build configuration list for PBXNativeTarget "Pods-GrabIdPartnerSDK_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				10A7BC3F3BA1EDDDFF913F90777CDD7A /* Debug */,
-				A69C2F9A3CD1BB5029CD66EA38AC969B /* Release */,
+				D720133C585A0283A0341898F83DA6B6 /* Debug */,
+				C76D38A41B323BEE5480BEDECED69B42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
