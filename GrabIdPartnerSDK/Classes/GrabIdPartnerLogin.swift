@@ -356,20 +356,22 @@ public final class GrabSDK {
         }
     }
 
-    var tokenInfo: Json?
+    var resTokenInfo: Json?
 
-    public func loadIdTokenInfo(completion: @escaping (IdTokenInfo?, GrabIdPartnerError?) -> Void) {
+    @Rx public var asyncTokenInfo: Result<IdTokenInfo, GrabIdPartnerError>?
+
+    public func loadIdTokenInfo() {
         guard let idTokenVerificationEndpoint = sessionData.idTokenVerificationEndpoint else {
             let error = GrabIdPartnerError(code: .invalidIdToken, localizedMessage: Loc.invalidIdToken,
                     domain: .getIdTokenInfo, serviceError: nil)
-            completion(nil, error)
+            asyncTokenInfo = .failure(error)
             return
         }
 
         guard let nonce = sessionData.nonce else {
             let error = GrabIdPartnerError(code: .invalidNonce, localizedMessage: Loc.invalidNonce,
                     domain: .getIdTokenInfo, serviceError: nil)
-            completion(nil, error)
+            asyncTokenInfo = .failure(error)
             return
         }
 
@@ -377,7 +379,7 @@ public final class GrabSDK {
            let expirationDate = idTokenInfo.expiration,
            expirationDate > Date() {
             // found valid idToken, return it
-            completion(idTokenInfo, nil)
+            self.asyncTokenInfo = .success(idTokenInfo)
             return
         } else {
             // delete the cache token and get a new one
@@ -388,8 +390,8 @@ public final class GrabSDK {
             P.id_token: idToken,
             P.nonce: nonce
         ]
-        tokenInfo = Json(idTokenVerificationEndpoint).percentEncodedGet(urlParams: paramValues).onFailure { error in
-            completion(nil, error)
+        resTokenInfo = Json(idTokenVerificationEndpoint).percentEncodedGet(urlParams: paramValues).onFailure { error in
+            self.asyncTokenInfo = .failure(error)
             _ = self.removeSessionData()
         }.onSuccess { json in
             guard let audienceIdValue = json[P.audience].string, !audienceIdValue.isEmpty,
@@ -400,7 +402,7 @@ public final class GrabSDK {
                   let tokenIdValue = json[P.tokenId].string, !tokenIdValue.isEmpty else {
                 let error = GrabIdPartnerError(code: .invalidNonce, localizedMessage: Loc.invalidNonce,
                         domain: .getIdTokenInfo, serviceError: nil)
-                completion(nil, error)
+                self.asyncTokenInfo = .failure(error)
                 return
             }
 
@@ -416,7 +418,7 @@ public final class GrabSDK {
                     nonce: nonceValue)
 
             self.saveIdTokenInfo(idTokenInfo)
-            completion(idTokenInfo, nil)
+            self.asyncTokenInfo = .success(idTokenInfo)
         }
     }
 

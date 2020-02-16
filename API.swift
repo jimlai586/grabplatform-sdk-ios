@@ -5,6 +5,7 @@
 import Foundation
 
 typealias P = Params
+
 enum Params: String {
     case accessToken, idToken, tokenId, refreshToken, client_id, code_challenge, code_challenge_method, device_id
     case nonce, redirect_uri, response_type, state, scope, login_hint, id_token_hint, prompt, request, acr_values
@@ -49,6 +50,7 @@ extension Resource {
         task.resume()
         return self
     }
+
     func percentEncodedGet(urlParams: [Params: String]) -> Self {
         guard var urlComponents = URLComponents(string: url) else {
             preError()
@@ -144,6 +146,71 @@ extension Resource {
     }
 }
 
+final class WeakWrapper<T> {
+    weak var wrapper: AnyObject?
+    var callback: ((T) -> Void)?
+    var value: T? {
+        didSet {
+            if let v = value {
+                callback?(v)
+            }
+        }
+    }
+
+    init(_ w: AnyObject, _ cb: @escaping ((T) -> Void)) {
+        wrapper = w
+        callback = cb
+    }
+}
+
+
+public protocol Tx: class {
+    associatedtype Value
+    func onNewValue(_ res: Value)
+}
+
+@propertyWrapper
+public final class Rx<T> {
+    public var wrappedValue: T? {
+        didSet {
+            if let v = wrappedValue {
+                notify(v)
+            }
+        }
+    }
+
+    public init(wrappedValue: T?) {
+        self.wrappedValue = wrappedValue
+    }
+
+    public var projectedValue: Rx<T> {
+        self
+    }
+    var subs = [WeakWrapper<T>]()
+
+    public func subscribe<U>(_ sub: U) where U: Tx, U.Value == T {
+        // avoid duplicates
+        for s in subs {
+            if s.wrapper === sub {
+                return
+            }
+        }
+        let cb: (T) -> Void = { v in
+            sub.onNewValue(v)
+        }
+        subs.append(WeakWrapper<T>(sub, cb))
+    }
+
+    func notify(_ v: T) {
+        subs.forEach {
+            $0.value = v
+        }
+        subs = subs.filter {
+            $0.wrapper != nil
+        }
+    }
+}
+
 final class Json: Resource {
     var fail: ((GrabIdPartnerError) -> ())?
 
@@ -163,8 +230,7 @@ public extension Dictionary where Key: RawRepresentable, Key.RawValue == String 
             let v = self[k]!
             if let x = v as? [Key: Any] {
                 d[k.rawValue] = x.toStringKey()
-            }
-            else {
+            } else {
                 d[k.rawValue] = v
             }
         }
@@ -175,6 +241,7 @@ public extension Dictionary where Key: RawRepresentable, Key.RawValue == String 
 
 public indirect enum JSON {
     case arr([Any]), dict([String: Any]), json(JSON), raw(Any), null
+
     public init<T>(_ pd: [T: Any]) where T: RawRepresentable, T.RawValue == String {
         self.init(pd.toStringKey())
     }
@@ -211,7 +278,7 @@ public indirect enum JSON {
 }
 
 public extension JSON {
-     subscript<T>(_ rs: T) -> JSON where T: RawRepresentable, T.RawValue == String {
+    subscript<T>(_ rs: T) -> JSON where T: RawRepresentable, T.RawValue == String {
         switch self {
         case .dict(let d):
             return JSON(d[rs.rawValue])

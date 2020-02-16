@@ -15,7 +15,7 @@ struct Configuration {
     static let scope = "gid_test_scope_1 gid_test_scope_2 gid_test_scope_3 openid"
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, Tx {
     // show different mode using the SDK to create sd
     private let usesdkSDKConfigs = true
 
@@ -108,17 +108,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didGetIdTokenInfo(_ sender: Any) {
-        sdk.loadIdTokenInfo() { [weak self] (idTokenInfo, error) in
-
-            if let error = error {
-                self?.logMessage(message: error.localizedMessage ?? "Failed to retreive idToken Info!!!")
-            } else if let idTokenInfo = idTokenInfo {
-                self?.logMessage(message: "Grab Verify idToken success:")
-                self?.printIdTokenInfo(idTokenInfo: idTokenInfo)
-            } else {
-                self?.logMessage(message: "Failed to retreive idToken Info!!!")
-            }
-        }
+        sdk.$asyncTokenInfo.subscribe(self)
+        sdk.loadIdTokenInfo()
     }
 
     @IBAction func didAccessTestRes(_ sender: Any) {
@@ -486,6 +477,16 @@ class ViewController: UIViewController {
             // Following are sample errors. App should define their own error messages.
             static let testResServiceFailed = "Test res service failed!"
             static let invalidServiceResponse = "Test res service returned invalid response"
+        }
+    }
+
+    func onNewValue(_ res: Result<IdTokenInfo, GrabIdPartnerError>) {
+        switch res {
+        case .success(let idTokenInfo):
+            logMessage(message: "Grab Verify idToken success:")
+            printIdTokenInfo(idTokenInfo: idTokenInfo)
+        case .failure(let e):
+            logMessage(message: "Failed to retreive idToken Info!!!")
         }
     }
 }
