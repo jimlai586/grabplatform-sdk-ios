@@ -74,13 +74,32 @@ Try using default value to avoid optional. The trick is to unwrap key properties
 
 ## Simplify networking
 
-You can at least refactor URLRequest setup and dataTask completion, e.g.; basic error and http response code checks.
+One should at least refactor URLRequest setup and dataTask completion, e.g.; basic error and http response code checks.
 
-Talk to your backend team to for POST with JSON instead of encoded URL. 
+I'd avoid using encoded url in POST requests.
 
-Dude, it's 2020, and you are spending a good chunk of your code assembling parameters to URL. 
+A JSON library would also be handy. See API.swift for a simple implementation of such library.
 
-A JSON library would also be handy. Everything is JSON in 2020.
+I'd also recommend a resource-based approach:
+
+```swift
+protocol Resource: class {
+    var url: String { get set }
+    var success: ((JSON) -> ())? { get set }
+    var fail: ((GrabIdPartnerError) -> ())? { get set }
+    func onSuccess(_ cb: @escaping (JSON) -> ()) -> Self
+    func onFailure(_ cb: @escaping (GrabIdPartnerError) -> ()) -> Self
+    func dataTask(_ req: URLRequest) -> URLSessionTask
+    func preError()
+    func post(urlParams: [Params: String]) -> Self
+    func get() -> Self
+}
+```
+Observe that requests, and callbacks are refactored out in protocol extension which can be customized for different types of resources.
+
+A GET would look like this `api.resource.get().onSuccess { json in ...}.onFailure { error in ...}`
+
+Protocol oriented, highly refactored, with self-contained simple libraries (total < 300 lines). 
 
 ## Other refactors and improvements 
 
