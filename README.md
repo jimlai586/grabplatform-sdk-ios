@@ -64,7 +64,9 @@ Simplify all intermediate error handling. The trick is not checking every step o
 
 you don't need to check remaining steps.
 
-LoadLoginSession and CreateLoginSession are boilerplate. You just load some values from plist, do it fast OK?
+LoadLoginSession and CreateLoginSession are boilerplate. Loading some values from plist should be made as simple as possible.
+
+Also there's no reason not to do this in init. SDK can't work without it.
 
 ## Simplify IdTokenInfo
 
