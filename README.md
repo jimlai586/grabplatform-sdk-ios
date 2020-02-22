@@ -64,9 +64,61 @@ Simplify all intermediate error handling. The trick is not checking every step o
 
 you don't need to check remaining steps.
 
-LoadLoginSession and CreateLoginSession are boilerplate. Loading some values from plist should be made as simple as possible.
+LoadLoginSession and CreateLoginSession are boilerplate. 
 
-Also there's no reason not to do this in init. SDK can't work without it.
+Take a look at its design:
+
+```swift
+      (loginSession, error) = createLoginSession(clientId: clientId, redirectUrl: redirectUrl, scope: scope, request: request,
+                                                   acrValues: acrValues, serviceDiscoveryUrl: serviceDiscoveryUrl,
+                                                   hint: hint, idTokenHint: idTokenHint, prompt: prompt)
+  //...
+  public func createLoginSession(clientId: String?, redirectUrl: String?, scope: String?,
+                                  request: String? = nil, acrValues: [String:String]? = nil, serviceDiscoveryUrl: String?,
+                                  hint: String = "", idTokenHint: String = "", prompt:String = "") -> (LoginSession?, GrabIdPartnerError?) {
+    if let appClientId = clientId, !appClientId.isEmpty,
+       let appScope = scope, !appScope.isEmpty,
+       let appRedirectUrl = redirectUrl,
+       let appUrl = URL(string: appRedirectUrl),
+       let serviceDiscoveryUrl = serviceDiscoveryUrl {
+      var loginSession: LoginSession? = nil
+      loginSession = LoginSession(clientId: appClientId,
+                                  redirectUrl: appUrl,
+                                  scope: appScope,
+                                  request: request,
+                                  acrValues: acrValues,
+                                  serviceDiscoveryUrl: serviceDiscoveryUrl,
+                                  hint: hint,
+                                  idTokenHint: idTokenHint,
+                                  prompt: prompt)
+      return (loginSession, nil)
+    } //... 
+```
+And the LoginSession init itself
+```swift
+  @objc public init(clientId : String, redirectUrl : URL, scope: String, request: String? = nil, acrValues: [String:String]? = nil,
+                    serviceDiscoveryUrl: String, hint: String = "", idTokenHint: String = "", prompt:String = "") {
+    self.clientId = clientId
+    self.redirectUrl = redirectUrl
+    self.scope = scope
+    self.serviceDiscoveryUrl = serviceDiscoveryUrl
+    self.request = request
+    self.acrValues = acrValues
+    self.hint = hint
+    self.idTokenHint = idTokenHint
+    self.prompt = prompt
+    
+    super.init()
+  }
+```
+
+That is a lot of boilerplate to create an instance.
+
+You can just create an instance and pass that instance around. Or better yet, create the instance in init as part of the model properties, since SDK couldn't work without it. I showcased this in this fork.
+
+Most of the GrabIdPartner methods take a LoginSession instance as argument. This requires developer to maintain a LoginSession object and pass it around. From the looks of it LoginSession should be a one-off config, i.e.; you config once. You are also assuming developer won't mutate it somewhere and cause inconsistent session states.
+
+Simplify LoginSession by replacing it with a simple Config value type that conforms to Codable. SDk simply creates a copy as default value. Can be made to be configurable later.
 
 ## Simplify IdTokenInfo
 
@@ -80,8 +132,13 @@ One should at least refactor URLRequest setup and dataTask completion, e.g.; bas
 
 I'd avoid using encoded url in POST requests.
 
-A JSON library would also be handy. See API.swift for a simple implementation of such library.
+A JSON library would also be handy. E.g.; 
 
+```swift
+public indirect enum JSON {
+    case arr([Any]), dict([String: Any]), json(JSON), raw(Any), null
+}
+```
 I'd also recommend a resource-based approach:
 
 ```swift
@@ -109,7 +166,7 @@ There's a lack of computed properties and value types.
 
 There are quite a lot of code duplications.
 
-There are a lot of parameters passing around and initialization. 
+There are a lot of parameters passing around. 
 
 It can all be refacored and improved.
 
